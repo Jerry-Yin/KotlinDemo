@@ -4,14 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
-    android:background="@drawable/shape_radius_rect"
+    android:background="@drawable/ripple_btn1"
     android:elevation="10dp">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/shape_radius_rect">
+        android:layout_height="100dp">
 
         <ImageView
             android:id="@+id/img_topic"
