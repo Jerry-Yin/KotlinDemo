@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.jerryyin.kotlindemo.R
 import com.jerryyin.kotlindemo.interfaces.OnItemClickListener
@@ -35,9 +36,9 @@ class CusRecyclerViewAdapter(
     override fun onBindViewHolder(holder: CustomViewHolder?, position: Int) {
         val news: ReNews = dataList.get(position)
         if (holder != null) {
-            holder.index.text = news.index
-            holder.content.text = news.content
-            holder.check.isChecked = news.isCheck
+            holder.img.setImageDrawable(c.resources.getDrawable(news.imgId!!))
+            holder.title.text = news.title
+            holder.time.text = news.time
             if (mClickListener != null) {
                 holder.itemView.setOnClickListener(object : View.OnClickListener {
                     override fun onClick(v: View?) {
@@ -56,8 +57,8 @@ class CusRecyclerViewAdapter(
     }
 
     class CustomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var index: TextView = view.txt_index
-        var content: TextView = view.txt_content
-        var check: AppCompatCheckBox = view.check
+        var img: ImageView = view.img_topic
+        var title: TextView = view.txt_title
+        var time: TextView = view.txt_time
     }
 }

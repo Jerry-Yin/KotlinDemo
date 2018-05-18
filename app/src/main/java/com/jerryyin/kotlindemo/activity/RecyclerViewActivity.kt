@@ -1,32 +1,29 @@
 package com.jerryyin.kotlindemo.activity
 
-import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import android.text.format.DateUtils
 import android.util.Log
-import android.view.MotionEvent
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.Toast
 import com.jerryyin.kotlindemo.R
-import com.jerryyin.kotlindemo.R.id.recycler_view
 import com.jerryyin.kotlindemo.adapter.CusRecyclerViewAdapter
 import com.jerryyin.kotlindemo.interfaces.OnItemClickListener
-import com.jerryyin.kotlindemo.interfaces.RecyclerOnItemClickListener
 import com.jerryyin.kotlindemo.model.ReNews
+import com.jerryyin.kotlindemo.utils.DateUtil
 import kotlinx.android.synthetic.main.layout_recycler_view.*
-import kotlin.math.log
+import java.sql.Time
 
 class RecyclerViewActivity : AppCompatActivity() {
 
 
-    val TAG = "RecyclerViewActivity.class"
+    val mTAG = "RecyclerViewActivity.class"
 
     private var mNewsList: ArrayList<ReNews> = ArrayList()
     private var mRecyclerViewAdapter: CusRecyclerViewAdapter? = null
+    private val mImageIds = listOf<Int>(R.mipmap.img_couple, R.mipmap.img_family, R.mipmap.img_jump, R.mipmap.img_travel, R.mipmap.img_snow)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +35,9 @@ class RecyclerViewActivity : AppCompatActivity() {
     private fun initData() {
         for (i in 1..20) {
             mNewsList.add(ReNews(
-                    i.toString(),
-                    "this is the number $i content!",
-                    i % 2 == 0))
+                    mImageIds[(Math.random()*4).toInt()],
+                    "Top beaches $i to visit !",
+                    DateUtil.stampToDate(System.currentTimeMillis().toString())))
         }
     }
 
@@ -56,7 +53,7 @@ class RecyclerViewActivity : AppCompatActivity() {
 //            @SuppressLint("ShowToast", "LongLogTag")
 //            override fun onItemClick(view: View, position: Int) {
 //                Toast.makeText(this@RecyclerViewActivity, "click item ${position}!", Toast.LENGTH_SHORT).show()
-//                Log.d(TAG, "click item ${position}!")
+//                Log.d(mTAG, "click item ${position}!")
 //            }
 //
 //
@@ -64,7 +61,7 @@ class RecyclerViewActivity : AppCompatActivity() {
 //            override fun onItemLongClick(view: View, position: Int) {
 //                Toast.makeText(this@RecyclerViewActivity, "long click item ${position}!", Toast.LENGTH_SHORT).show()
 //                println("long click item ${position}!")
-//                Log.d(TAG, "long click item ${position}!")
+//                Log.d(mTAG, "long click item ${position}!")
 //            }
 //
 //        }))
@@ -74,12 +71,12 @@ class RecyclerViewActivity : AppCompatActivity() {
         mRecyclerViewAdapter!!.setOnItemClickListener(object : OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 Toast.makeText(this@RecyclerViewActivity, "click item ${position}!", Toast.LENGTH_SHORT).show()
-                Log.d(TAG, "click item ${position}!")
+                Log.d(mTAG, "click item ${position}!")
             }
 
             override fun onItemLongClick(view: View, position: Int) {
                 Toast.makeText(this@RecyclerViewActivity, "long click item ${position}!", Toast.LENGTH_SHORT).show()
-                Log.d(TAG, "long click item ${position}!")
+                Log.d(mTAG, "long click item ${position}!")
             }
 
         })

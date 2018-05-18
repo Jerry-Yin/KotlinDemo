@@ -27,9 +27,9 @@ class RecyclerOnItemClickListener(
             override fun onLongPress(e: MotionEvent?) {
                 super.onLongPress(e)
                 //long click
-                if (e != null && listener != null) {
+                if (e != null) {
                     val childView: View = recyclerView.findChildViewUnder(e.x, e.y)
-                    listener.onItemLongClick(
+                    listener!!.onItemLongClick(
                             childView,
                             recyclerView.getChildAdapterPosition(childView)
                     )
@@ -38,12 +38,12 @@ class RecyclerOnItemClickListener(
 
             override fun onSingleTapUp(e: MotionEvent?): Boolean {
                 //click
-                if (e != null && listener != null) {
+                if (e != null) {
                     println("e=${e}, listener=${listener}, view=${recyclerView}")
                     val childView: View = recyclerView.findChildViewUnder(e.x, e.y)
                     if (childView != null) {
                         println("childView = ${childView}")
-                        listener.onItemClick(childView, recyclerView.getChildAdapterPosition(childView))
+                        listener!!.onItemClick(childView, recyclerView.getChildAdapterPosition(childView))
                         return true
                     }
                 }
