@@ -19,8 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.RecyclerViewActivity"></activity>
-
+        <activity android:name=".activity.RecyclerViewActivity" />
+        <activity android:name=".activity.KDNewsDetailActivity"></activity>
     </application>
 
 </manifest>

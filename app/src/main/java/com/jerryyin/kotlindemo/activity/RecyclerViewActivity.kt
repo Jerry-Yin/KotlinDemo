@@ -1,9 +1,11 @@
 package com.jerryyin.kotlindemo.activity
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.LinearLayoutManager
-import android.text.format.DateUtils
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -12,13 +14,21 @@ import com.jerryyin.kotlindemo.adapter.CusRecyclerViewAdapter
 import com.jerryyin.kotlindemo.interfaces.OnItemClickListener
 import com.jerryyin.kotlindemo.model.ReNews
 import com.jerryyin.kotlindemo.utils.DateUtil
+import kotlinx.android.synthetic.main.item_recycler_view1.*
 import kotlinx.android.synthetic.main.layout_recycler_view.*
-import java.sql.Time
 
 class RecyclerViewActivity : AppCompatActivity() {
 
+    companion object {
+        val TAG = "RecyclerViewActivity.class"
 
-    val mTAG = "RecyclerViewActivity.class"
+        val KEY_CURRENT_NEWS = "currentNews"
+        val KEY_NEWS_ID = "id"
+        val KEY_NEWS_IMG = "image"
+        val KEY_NEWS_TITLE = "title"
+        val KEY_NEWS_TIME = "time"
+    }
+
 
     private var mNewsList: ArrayList<ReNews> = ArrayList()
     private var mRecyclerViewAdapter: CusRecyclerViewAdapter? = null
@@ -35,7 +45,9 @@ class RecyclerViewActivity : AppCompatActivity() {
     private fun initData() {
         for (i in 1..20) {
             mNewsList.add(ReNews(
-                    mImageIds[(Math.random()*4).toInt()],
+                    i,
+                    mImageIds[(Math.random() * 4).toInt()],
+//                    R.mipmap.img_jump,
                     "Top beaches $i to visit !",
                     DateUtil.stampToDate(System.currentTimeMillis().toString())))
         }
@@ -53,7 +65,7 @@ class RecyclerViewActivity : AppCompatActivity() {
 //            @SuppressLint("ShowToast", "LongLogTag")
 //            override fun onItemClick(view: View, position: Int) {
 //                Toast.makeText(this@RecyclerViewActivity, "click item ${position}!", Toast.LENGTH_SHORT).show()
-//                Log.d(mTAG, "click item ${position}!")
+//                Log.d(TAG, "click item ${position}!")
 //            }
 //
 //
@@ -61,7 +73,7 @@ class RecyclerViewActivity : AppCompatActivity() {
 //            override fun onItemLongClick(view: View, position: Int) {
 //                Toast.makeText(this@RecyclerViewActivity, "long click item ${position}!", Toast.LENGTH_SHORT).show()
 //                println("long click item ${position}!")
-//                Log.d(mTAG, "long click item ${position}!")
+//                Log.d(TAG, "long click item ${position}!")
 //            }
 //
 //        }))
@@ -71,12 +83,26 @@ class RecyclerViewActivity : AppCompatActivity() {
         mRecyclerViewAdapter!!.setOnItemClickListener(object : OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 Toast.makeText(this@RecyclerViewActivity, "click item ${position}!", Toast.LENGTH_SHORT).show()
-                Log.d(mTAG, "click item ${position}!")
+                Log.d(TAG, "click item ${position}!")
+                var intent = Intent(this@RecyclerViewActivity, KDNewsDetailActivity::class.java)
+                //场景动画页面跳转
+//                var imagePair = Pair<View, String>(img_topic, resources.getString(R.string.trans_img_topic))
+//                var txtTitle = Pair<View, String>(txt_title, "txtTitle")
+                var optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this@RecyclerViewActivity, img_topic, getString(R.string.trans_img_topic))
+
+                //界面间传值
+                var bundle: Bundle = Bundle()
+                bundle.putInt(KEY_NEWS_ID, position)
+                bundle.putString(KEY_NEWS_TITLE, mNewsList[position].title)
+                bundle.putInt(KEY_NEWS_IMG, mNewsList[position].imgId!!)
+                bundle.putString(KEY_NEWS_TIME, mNewsList[position].time)
+                intent.putExtra(KEY_CURRENT_NEWS, bundle)
+                ActivityCompat.startActivity(this@RecyclerViewActivity, intent, optionsCompat.toBundle());
             }
 
             override fun onItemLongClick(view: View, position: Int) {
                 Toast.makeText(this@RecyclerViewActivity, "long click item ${position}!", Toast.LENGTH_SHORT).show()
-                Log.d(mTAG, "long click item ${position}!")
+                Log.d(TAG, "long click item ${position}!")
             }
 
         })

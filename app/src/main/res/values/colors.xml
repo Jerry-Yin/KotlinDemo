@@ -7,4 +7,6 @@
     <color name="white_dark1">#FAFAFA</color>
     <color name="white_dark2">#BDBDBD</color>
     <color name="white">#ffffff</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

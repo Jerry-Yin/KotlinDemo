@@ -16,7 +16,8 @@
             android:id="@+id/img_topic"
             android:layout_width="140dp"
             android:layout_height="match_parent"
-            android:src="@mipmap/img_family" />
+            android:src="@mipmap/img_family"
+            android:transitionName="@string/trans_img_topic"/>
 
         <LinearLayout
             android:layout_width="match_parent"
