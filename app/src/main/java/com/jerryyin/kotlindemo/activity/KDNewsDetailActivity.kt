@@ -35,7 +35,8 @@ class KDNewsDetailActivity : AppCompatActivity() {
 
     private fun initView() {
         //设置 CoordinatorLayout Title标题颜色
-        collapsing_toolbar_layout.setExpandedTitleColor(getResources().getColor(R.color.white))
+//        collapsing_toolbar_layout.setExpandedTitleColor(getResources().getColor(R.color.white))
+        collapsing_toolbar_layout.setExpandedTitleTextAppearance(R.style.CollapsingTitle)
 
         if (mNews == null){
             Toast.makeText(this@KDNewsDetailActivity, "数据初始化失败，请检查！", Toast.LENGTH_SHORT).show()

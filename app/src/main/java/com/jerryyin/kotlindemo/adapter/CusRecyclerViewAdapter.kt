@@ -1,13 +1,16 @@
 package com.jerryyin.kotlindemo.adapter
 
 import android.content.Context
+import android.net.Uri
 import android.support.v7.widget.AppCompatCheckBox
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.facebook.drawee.view.SimpleDraweeView
 import com.jerryyin.kotlindemo.R
 import com.jerryyin.kotlindemo.interfaces.OnItemClickListener
 import com.jerryyin.kotlindemo.model.ReNews
@@ -18,7 +21,15 @@ class CusRecyclerViewAdapter(
         private val dataList: List<ReNews>
 ) : RecyclerView.Adapter<CusRecyclerViewAdapter.CustomViewHolder>() {
 
+
+    val TAG = "CusRecyclerViewAdapter.class"
     var mClickListener: OnItemClickListener? = null;
+
+    class CustomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var img: SimpleDraweeView = view.img_topic
+        var title: TextView = view.txt_title
+        var time: TextView = view.txt_time
+    }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
         this.mClickListener = listener
@@ -36,6 +47,14 @@ class CusRecyclerViewAdapter(
     override fun onBindViewHolder(holder: CustomViewHolder?, position: Int) {
         val news: ReNews = dataList.get(position)
         if (holder != null) {
+
+//            Log.d(TAG, c.resources.getDrawable(news.imgId!!).toString())
+//            Log.d(TAG, news.imgId.toString())
+//            Log.d(TAG, c.resources.getString(news.imgId!!))
+//            Log.d(TAG, c.getString(news.imgId!!))
+//            Log.d(TAG, "res://"+c.packageName+"/R.mipmap.img_family")
+//            Log.d(TAG, Uri.parse("res://"+c.packageName+"/R.mipmap.img_family").toString())
+
             holder.img.setImageDrawable(c.resources.getDrawable(news.imgId!!))
             holder.title.text = news.title
             holder.time.text = news.time
@@ -56,9 +75,9 @@ class CusRecyclerViewAdapter(
         }
     }
 
-    class CustomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var img: ImageView = view.img_topic
-        var title: TextView = view.txt_title
-        var time: TextView = view.txt_time
+    //ViewHolder复用的时候调用
+    override fun onViewRecycled(holder: CustomViewHolder?) {
+        super.onViewRecycled(holder)
+
     }
 }

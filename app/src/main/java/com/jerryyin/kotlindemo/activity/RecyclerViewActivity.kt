@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v4.util.Pair
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -15,6 +16,7 @@ import com.jerryyin.kotlindemo.interfaces.OnItemClickListener
 import com.jerryyin.kotlindemo.model.ReNews
 import com.jerryyin.kotlindemo.utils.DateUtil
 import kotlinx.android.synthetic.main.item_recycler_view1.*
+import kotlinx.android.synthetic.main.item_recycler_view1.view.*
 import kotlinx.android.synthetic.main.layout_recycler_view.*
 
 class RecyclerViewActivity : AppCompatActivity() {
@@ -86,9 +88,11 @@ class RecyclerViewActivity : AppCompatActivity() {
                 Log.d(TAG, "click item ${position}!")
                 var intent = Intent(this@RecyclerViewActivity, KDNewsDetailActivity::class.java)
                 //场景动画页面跳转
-//                var imagePair = Pair<View, String>(img_topic, resources.getString(R.string.trans_img_topic))
-//                var txtTitle = Pair<View, String>(txt_title, "txtTitle")
-                var optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this@RecyclerViewActivity, img_topic, getString(R.string.trans_img_topic))
+                var imagePair = Pair<View, String>(view.img_topic, resources.getString(R.string.trans_img_topic))
+                var titlepair = Pair<View, String>(view.txt_title, resources.getString(R.string.trans_txt_title))
+//                var optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this@RecyclerViewActivity, view.img_topic, getString(R.string.trans_img_topic))
+
+                val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this@RecyclerViewActivity, imagePair, titlepair)
 
                 //界面间传值
                 var bundle: Bundle = Bundle()

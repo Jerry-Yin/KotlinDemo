@@ -5,5 +5,8 @@
     <string name="title_activity_kdnews_detail">NewsDetailActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
     <string name="trans_img_topic">imageTopic</string>
+    <string name="trans_txt_title">textTitle</string>
+
 </resources>

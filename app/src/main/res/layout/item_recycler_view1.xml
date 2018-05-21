@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,12 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="100dp">
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/img_topic"
             android:layout_width="140dp"
             android:layout_height="match_parent"
-            android:src="@mipmap/img_family"
-            android:transitionName="@string/trans_img_topic"/>
+            android:transitionName="@string/trans_img_topic"
+            fresco:placeholderImage="@mipmap/img_default"
+            fresco:roundAsCircle="true"
+            fresco:roundedCornerRadius="8dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,7 +37,8 @@
                 android:layout_centerInParent="true"
                 android:text="This is the topic title"
                 android:textColor="#424242"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:transitionName="@string/trans_txt_title"/>
 
             <TextView
                 android:id="@+id/txt_time"
