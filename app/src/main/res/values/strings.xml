@@ -8,5 +8,24 @@
 
     <string name="trans_img_topic">imageTopic</string>
     <string name="trans_txt_title">textTitle</string>
+    <string name="item_content"> \t \t Create an ActivityOptions to transition between Activities using cross-Activity scene animations. \n
+                                 \n
+                                 \t \t This method carries the position of multiple shared elements to the started Activity. The position of \n
+                                the first element in sharedElements will be used as the epicenter for the exit Transition. \n
+                                         \n
+                                 \t \t The position of the associated shared element in the launched Activity will be the epicenter of its entering Transition. \n
+                                This requires FEATURE_CONTENT_TRANSITIONS to be enabled on the calling Activity to cause an exit transition. \n
+                                         \n
+                                 \t \t The same must be in the called Activity to get an entering transition.
+                                    \n
+                                \t \t Material is an adaptable system of guidelines, components, and tools that support the best practices of user interface design. \n
+                                \t \t        Backed by open-source code, Material streamlines collaboration between designers and developers, and helps teams quickly build beautiful products. \n \n
+One of the most common frustrations faced by product teams is having to choose between building beautiful and building fast. But that’s where Material’s new killer feature comes in—Material Theming lets anyone systematically express their unique style across a product. When you make just a few decisions about color and typography, for example, it’s simple to apply the direction consistently throughout the environment. #MaterialTheming means that you and your team can use the same tried-and-true code for Material buttons, bottom sheets, and navigation patterns, but tailor and tweak it to fit your brand. Google’s already using a custom Material theme, and now anyone can create their own stylized flavor of Material.
+
+Pro tip: Even if you’ve never heard of Crane, Shrine, or Reply, you’ll want to check out how these brands use Material Theming to address real-world design and product limitations.
+
+
+        </string>
+    <string name="title_activity_kdmusic_play">KDMusicPlay</string>
 
 </resources>

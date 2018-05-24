@@ -1,6 +1,16 @@
 # KotlinDemo
 Kotlin Android Demo for study &amp; test
 
+**新增功能：**
+
+    重新玩了一下音乐播放器，回顾一下这部分知识（顺便爬了一波QQ音乐的数据），所以增加了一套音乐播放器的功能，稍后陆续完善，如果有时间的话。
+    
+    
+    
+
+
+
+**项目问题集锦**
 
 **1.RecyclerView 展示列表中 ViewHolder的重用机制造成的图片错乱问题：**
     

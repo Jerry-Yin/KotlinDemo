@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.jerryyin.kotlindemo.R
+import com.jerryyin.kotlindemo.activity.KDMusicPlay
 import com.jerryyin.kotlindemo.activity.RecyclerViewActivity
 import kotlinx.android.synthetic.main.fragment_main.*
 
@@ -41,6 +42,7 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
 
     private fun initView() {
         btn_recycler_view.setOnClickListener(this)
+        btn_music.setOnClickListener(this)
     }
 
 
@@ -49,7 +51,16 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         when (v) {
             btn_recycler_view ->
                 goToRecyclerViewPage()
+
+            btn_music -> goToMusicPlayPage()
+
         }
+    }
+
+    private fun goToMusicPlayPage() {
+        val intent = Intent(mSelf, KDMusicPlay::class.java)
+        startActivity(intent)
+
     }
 
     fun goToRecyclerViewPage() {

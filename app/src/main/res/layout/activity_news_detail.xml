@@ -52,16 +52,15 @@
         android:id="@+id/n_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_margin="10dp">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:background="@color/white_dark2"
-            android:orientation="vertical">
-
-
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:text="@string/item_content"
+            android:textColor="@color/gray">
+        </TextView>
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton

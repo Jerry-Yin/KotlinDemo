@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
@@ -19,8 +19,11 @@
             android:layout_height="match_parent"
             android:transitionName="@string/trans_img_topic"
             fresco:placeholderImage="@mipmap/img_default"
-            fresco:roundAsCircle="true"
-            fresco:roundedCornerRadius="8dp"/>
+            fresco:roundBottomLeft="true"
+            fresco:roundTopLeft="true"
+            fresco:roundedCornerRadius="8dp" />
+        <!--fresco:roundAsCircle="true"-->
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,17 +41,13 @@
                 android:text="This is the topic title"
                 android:textColor="#424242"
                 android:textSize="18sp"
-                android:transitionName="@string/trans_txt_title"/>
+                android:transitionName="@string/trans_txt_title" />
 
             <TextView
                 android:id="@+id/txt_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5 min ago"/>
-
-
+                android:text="5 min ago" />
         </LinearLayout>
-
-
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
