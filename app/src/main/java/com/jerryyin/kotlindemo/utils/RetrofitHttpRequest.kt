@@ -27,18 +27,19 @@ class RetrofitHttpRequest {
         /**
          * create Retrofit object
          */
-        fun createRetrofit(url: String): Retrofit {
-            return Retrofit.Builder()
+        fun createRetrofit(url: String): HttpConfigInterface {
+            val retrofit= Retrofit.Builder()
                     .baseUrl(url)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
+            val httpConfigInterface = retrofit.create(HttpConfigInterface::class.java)
+            return httpConfigInterface
         }
 
-        fun httpGet(url: String, listener: OnResponseListener<String>) {
-            val retrofit = createRetrofit(url)
-            val httpConfigInterface = retrofit.create(HttpConfigInterface::class.java)
-
-            val call = httpConfigInterface.httpGet()
+        fun httpGet(call: Call<ResponseBody>, listener: OnResponseListener<String>) {
+//            val retrofit = createRetrofit(url)
+//            val httpConfigInterface = retrofit.create(HttpConfigInterface::class.java)
+//            val call = httpConfigInterface.getSongList()
             call.enqueue(object : Callback<ResponseBody> {
                 override fun onFailure(p0: Call<ResponseBody>?, p1: Throwable?) {
                     if (p1 != null) {

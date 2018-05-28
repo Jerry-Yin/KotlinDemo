@@ -55,7 +55,7 @@ class KDMusicListActivity : AppCompatActivity() {
 
 
     private fun getMusicList() {
-        RetrofitHttpRequest.httpGet(KDConfig.URL_QQ_MUSIC_LIST_JAY, object : OnResponseListener<String> {
+        RetrofitHttpRequest.httpGet(RetrofitHttpRequest.createRetrofit(KDConfig.URL_QQ_MUSIC_LIST_JAY).getSongList(), object : OnResponseListener<String> {
             override fun onSuccess(result: String) {
 //                MusicJsonCallback7523711350912596({"code":0,"data":{"keyword":"周杰伦","priority":0,"qc":[],...)
                 Log.d(TAG, result)
@@ -117,6 +117,7 @@ class KDMusicListActivity : AppCompatActivity() {
         mMusicAdapter!!.setOnItemClickListener(object : OnItemClickListener{
             override fun onItemClick(view: View, position: Int) {
                 var intent = Intent(this@KDMusicListActivity, KDMusicPlayActivity::class.java)
+                intent.putExtra("mid", mSongList!![position].mid.toString())
                 startActivity(intent)
             }
 

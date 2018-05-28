@@ -14,7 +14,10 @@ class KDConfig {
         val URL_QQ_MUSCI_LIST = "https://c.y.qq.com/soso/fcgi-bin/client_search_cp"
         // 周杰伦 的音乐列表
         val URL_QQ_MUSIC_LIST_JAY = "https://c.y.qq.com/soso/fcgi-bin/"
-
+        //获取vkey
+        val URL_QQ_MUSIC_VKEY = "https://c.y.qq.com/base/fcgi-bin/fcg_music_express_mobile3.fcg"
+        //获取歌曲资源地址
+        val URL_QQ_MUSIC_SONG_SRC = "http://dl.stream.qqmusic.qq.com/C400"
     }
 
 }

@@ -1,7 +1,9 @@
 package com.jerryyin.kotlindemo.utils
 
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import android.util.Log
+import com.jerryyin.kotlindemo.interfaces.OnResponseListener
+import com.jerryyin.kotlindemo.model.RequestMap
+import okhttp3.*
 import java.io.IOException
 
 /**
@@ -31,7 +33,52 @@ class OKHttpRequest {
         }
 
 
+        /**
+         * 异步请求
+         *
+         * @param url
+         * @param headParams
+         * @param listener
+         */
+        fun OKHttpGetAsync(url: String, headParams: List<RequestMap>?, listener: OnResponseListener<String>?) {
+            try {
+                Log.d(TAG, "url: $url")
+                val client = OkHttpClient()
+                val builder = Request.Builder()
+                //            builder.addHeader("Content-Type", "application/json");
+                if (headParams != null) {
+                    Log.d(TAG, "headParams.size():" + headParams!!.size)
+                    for (p in headParams) {
+                        builder.addHeader(p.key, p.value.toString())
+                        Log.d(TAG, "++ addHeader: " + p.key + ":" + p.value)
+                    }
+                }
+                builder.url(url)
+                        .get()
+                        .build()
+                val request = builder.build()
+                val call = client.newCall(request)
+                call.enqueue(object : Callback {
+                    override fun onFailure(call: Call, e: IOException) {
+                        if (listener != null) {
+                            listener!!.onFailure(e.hashCode(), e.message!!)
+                        }
+                    }
 
+                    @Throws(IOException::class)
+                    override fun onResponse(call: Call, response: Response) {
+                        if (listener != null) {
+                            listener!!.onSuccess(response.body()!!.string())
+                        }
+                    }
+                })
+            } catch (e: NullPointerException) {
+                if (listener != null) {
+                    listener!!.onFailure(e.hashCode(), e.message!!)
+                }
+            }
+
+        }
 
 
     }
