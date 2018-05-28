@@ -1,11 +1,9 @@
 package com.jerryyin.kotlindemo.activity
 
-import android.content.Context
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -16,9 +14,9 @@ import kotlinx.android.synthetic.main.content_kdmusic_play.*
 
 import kotlinx.android.synthetic.main.layout_activity_music_play.*
 
-class KDMusicPlay : AppCompatActivity(), View.OnClickListener {
+class KDMusicPlayActivity : AppCompatActivity(), View.OnClickListener {
 
-    val TAG = "KDMusicPlay.kt"
+    val TAG = "KDMusicPlayActivityActivity.kt"
     val URL_MUSIC = "http://dl.stream.qqmusic.qq.com/C4000031TAKo0095np.m4a?vkey=A8C1E35A1A9476F26C4278287B9580246C46070D1AC9756EA836391A0E3F89BC29790DFBB344CD04363C51613131D92D36A5C7B3073B12E4&guid=5767746091&uin=846597629&fromtag=66"
 
 
@@ -36,6 +34,12 @@ class KDMusicPlay : AppCompatActivity(), View.OnClickListener {
         }
 
         initViews()
+        initData();
+    }
+
+    private fun initData() {
+//        getMusicList()
+
     }
 
     private fun initViews() {
@@ -48,12 +52,12 @@ class KDMusicPlay : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v) {
+//            btn_last_mc -> getMusicList()
             btn_play_mc -> playMusic()
             btn_pause_mc -> pauseMusic()
 
         }
     }
-
 
     private fun playMusic() {
         mMediaPlayerManager.play(URL_MUSIC, null, 0, object : OnPlayingListener {
@@ -63,7 +67,7 @@ class KDMusicPlay : AppCompatActivity(), View.OnClickListener {
 
             override fun onCompletion(mp: MediaPlayer) {
                 mp.release()
-                Toast.makeText(this@KDMusicPlay, "music playing is finished!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@KDMusicPlayActivity, "music playing is finished!", Toast.LENGTH_SHORT).show()
             }
 
         })

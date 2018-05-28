@@ -25,8 +25,12 @@
         <activity android:name=".activity.RecyclerViewActivity" />
         <activity android:name=".activity.KDNewsDetailActivity" />
         <activity
-            android:name=".activity.KDMusicPlay"
+            android:name=".activity.KDMusicPlayActivity"
             android:label="@string/title_activity_kdmusic_play"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.KDMusicListActivity"
+            android:label="@string/title_activity_kdmusic_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

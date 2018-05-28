@@ -27,5 +27,7 @@ Pro tip: Even if you’ve never heard of Crane, Shrine, or Reply, you’ll want 
 
         </string>
     <string name="title_activity_kdmusic_play">KDMusicPlay</string>
+    <string name="title_activity_kdmusic_list">KDMusicListActivity</string>
+    <string name="tips_music_list_err1">数据转换错误！</string>
 
 </resources>

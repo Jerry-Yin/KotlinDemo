@@ -1,16 +1,15 @@
 package com.jerryyin.kotlindemo.fragment
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import com.jerryyin.kotlindemo.R
-import com.jerryyin.kotlindemo.activity.KDMusicPlay
+import com.jerryyin.kotlindemo.activity.KDMusicListActivity
+import com.jerryyin.kotlindemo.activity.KDMusicPlayActivity
 import com.jerryyin.kotlindemo.activity.RecyclerViewActivity
 import kotlinx.android.synthetic.main.fragment_main.*
 
@@ -43,6 +42,7 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
     private fun initView() {
         btn_recycler_view.setOnClickListener(this)
         btn_music.setOnClickListener(this)
+        btn_music_box.setOnClickListener(this)
     }
 
 
@@ -54,11 +54,17 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
 
             btn_music -> goToMusicPlayPage()
 
+            btn_music_box -> toToMusicBox()
         }
     }
 
+    private fun toToMusicBox() {
+        val intent = Intent(mSelf, KDMusicListActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun goToMusicPlayPage() {
-        val intent = Intent(mSelf, KDMusicPlay::class.java)
+        val intent = Intent(mSelf, KDMusicPlayActivity::class.java)
         startActivity(intent)
 
     }
